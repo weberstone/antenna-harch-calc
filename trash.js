@@ -56,7 +56,6 @@ const toggleButtonHead = document.querySelector('.toggle-btn-head')
 const closeBtn = document.querySelector('.close-panel-btn')
 const moreBtnPanel = document.getElementById('moreBtnPanel')
 
-
 toggleButton.addEventListener('click', function() {
     panel.classList.toggle('open')
     document.body.classList.toggle('no-scroll')
@@ -72,7 +71,4 @@ toggleButton.addEventListener('click', function() {
 closeBtn.addEventListener('click', function() {
     panel.classList.remove('open')
     document.body.classList.remove('no-scroll')
-  });
-
-
-  
+  })

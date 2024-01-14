@@ -1,7 +1,6 @@
 const setLimitCounHistory = 8 // Количество выводимых карточек в краткой истории
 const $toastTxt = document.getElementById('toastTxt')
 
-
 // Делаю функцию которая будет формировать список из локального хранилища и обновлять его
 function updateListHistory(data, limitCount, idElementOut) {
     const $cardResultList = document.getElementById(idElementOut) // определяем куда будем все ложить
@@ -29,9 +28,9 @@ function updateListHistory(data, limitCount, idElementOut) {
     // Цикл из массива для краткого списка истории
     
     let count = 0
-    
     const $moreBtn = document.getElementById('moreBtn')
     const $removeHistoryAll = document.getElementById('removeHistoryAll')
+
     //Если нет ничего в истории то говорю
     if (Array.isArray(copyResultsArrayNow) && copyResultsArrayNow.length === 0) {
         $cardResultList.innerHTML = `
@@ -45,21 +44,15 @@ function updateListHistory(data, limitCount, idElementOut) {
     }
 
     //Если есть то формирую выдачу
-
     if (copyResultsArrayNow.length > limitCount ) {
         $moreBtn.style.display = 'block'
     } 
-
+    
     copyResultsArrayNow.forEach((historyCard, index) => {
-        
-       
         if (count < limitCount) {
             const $cardResultItem = document.createElement("div")
             $cardResultItem.classList.add("card-result-item")
             $cardResultItem.setAttribute("data-id", index)
-
-           
-
             $cardResultItem.innerHTML = `
             <div class="data-card">
                 <div class="card-result-head" id="cardResultItemHead">Для ${historyCard.frequencyItem} МГц (${historyCard.selectedValueLambdaItem} )</div>
@@ -69,20 +62,14 @@ function updateListHistory(data, limitCount, idElementOut) {
              <path d="M8.489 31.975c-0.271 0-0.549-0.107-0.757-0.316-0.417-0.417-0.417-1.098 0-1.515l14.258-14.264-14.050-14.050c-0.417-0.417-0.417-1.098 0-1.515s1.098-0.417 1.515 0l14.807 14.807c0.417 0.417 0.417 1.098 0 1.515l-15.015 15.022c-0.208 0.208-0.486 0.316-0.757 0.316z"></path>
             </svg>
             `
-        
             // Добавляем карточку в контейнер
             $cardResultList.appendChild($cardResultItem)
             count++
-
-           
-     
+            
             $cardResultItem.addEventListener("click", () => {
-
                 const $clickHistoryResultModal = new bootstrap.Modal(document.getElementById('clickHistoryResultModal'))
                 $clickHistoryResultModal.show()
-                
                 const $clickHistoryResultModalBody = document.getElementById('clickHistoryResultModalBody')
-        
                 $clickHistoryResultModalBody.innerHTML = `
                 <div class="modal-header">
                     <h5 id="freqNumResultMob" class="modal-title" id="exampleModalLabel">Время расчета: ${historyCard.dateItem}</h5>
@@ -129,20 +116,16 @@ function updateListHistory(data, limitCount, idElementOut) {
                             Длина прута
                             <span>${copyResultsArrayNow[index].provolkaItem} мм</span>
                         </li>
-                        
                     </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="button" onclick="deleteOneCardHistory(${index})" data-bs-dismiss="modal" class="btn btn-outline-secondary">Удалить с истории</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-                    
                 </div>
                 `
             })
         } 
-        
   })
-    
 }
 
 let resultsArrayNow = JSON.parse(localStorage.getItem('harchenkoAntennaKey')) // Забираю данные с локального хранилища
@@ -189,9 +172,7 @@ function calculate() {
             console.log('Частота введена плохо. Выключите компьютер и бросайте это дело')
             frequencyInput.classList.add('is-invalid')
             isValid = false
-
         }
-
     } validFreq()
 
     //Валидация для расстояния между точками
@@ -206,7 +187,6 @@ function calculate() {
             pointDistancInput.classList.add('is-invalid')
             isValid = false
         }
-
     }validPoint()
 
     if (isValid === true) {
@@ -214,7 +194,6 @@ function calculate() {
         if (window.innerWidth < 992) {
             new bootstrap.Modal(document.getElementById('resultMobileModal')).show();
         }
-       
     } else{
         console.log(' Не валидно')
         
@@ -225,15 +204,11 @@ function calculate() {
         toast.show()
         return
     }
-
     // End Validation
-
 
     const selectedValueLambda = parseFloat(selectElement.value) // Присваиваю выбранное значение  селектора отдельной переменной
     const frequencyValue = 300000 / parseFloat(document.getElementById('frequency').value) //Получаю значение с поля и сразу считаю длину волны
     const pointDistanceValue = document.getElementById('pointDistance').value //Получаю значение из поля дистанции между точками
-    
-
 
     function longFrame() {
         if (selectedValueLambda === 1) {
@@ -257,9 +232,7 @@ function calculate() {
     console.log('Общая длина прута без учета изгибов - ' + provolka)
     console.log('Длина волны - '+ frequencyValue)
 
-
     //Записываем в LocalStorage
-
     //УЗНАЕМ ДАТУ и время
     function formatDate(date) {
         const day = String(date.getDate()).padStart(2, '0')
@@ -267,17 +240,15 @@ function calculate() {
         const year = date.getFullYear()
         const hours = String(date.getHours()).padStart(2, '0')
         const minutes = String(date.getMinutes()).padStart(2, '0')
-      
         return `${day}.${month}.${year} ${hours}:${minutes}`
     }
       
-      // Получение текущей даты и времени
-      const currentDate = new Date()
+    // Получение текущей даты и времени
+    const currentDate = new Date()
       
-      // Форматирование даты и времени
-      const formattedDateTime = formatDate(currentDate)
+    //Форматирование даты и времени
+    const formattedDateTime = formatDate(currentDate)
      
-
     // Создаем объект с результатом
     let harchenkoAntennaBase = {
         frequencyItem: parseFloat(document.getElementById('frequency').value),
@@ -296,10 +267,7 @@ function calculate() {
     updateListHistory(resultsArrayNow, setLimitCounHistory, 'cardResultList') // Обновляю таблоицу
     updateListHistory(resultsArrayNow, Infinity, 'resultsListFull') 
 
-  
-
     //Выводим 1 текущий подсчет на страницу в блок
-
     //Для частоты
     
     let selectedValueLambdaForm = 1
@@ -315,6 +283,7 @@ function calculate() {
                 }
         }
         formatLamdaToTxt()
+
     //десктоп
     const $freqNumResult = document.getElementById('freqNumResult')
     const $formatLamdaToTxtDom = document.getElementById('formatLamdaToTxtDom')
@@ -325,21 +294,21 @@ function calculate() {
     const $formatLamdaToTxtDomMob = document.getElementById('formatLamdaToTxtDomMob')
     $freqNumResultMob.textContent = 'Для ' + document.getElementById('frequency').value + ' ' + 'МГц' + ' (' + selectedValueLambdaForm + ')'
 
-    // Для длинной стороны
-    //десктоп
+    //Для длинной стороны
+    //Десктоп
     const $resultLongFrameNow = document.getElementById('resultLongFrameNow')
     $resultLongFrameNow.textContent =  Math.round(longFrame()) + ' '  + 'мм'
-    //мобайл
+    //Mобайл
     const $resultLongFrameNowMob = document.getElementById('resultLongFrameNowMob')
     $resultLongFrameNowMob.textContent =  Math.round(longFrame()) + ' '  + 'мм'
 
-     // Для короткой стороны
-     //десктоп
-     const $resultShortFrameNow = document.getElementById('resultShortFrameNow')
-     $resultShortFrameNow.textContent =  Math.round(shortFrame) + ' ' + 'мм'
-     //мобайл
-     const $resultShortFrameNowMob = document.getElementById('resultShortFrameNowMob')
-     $resultShortFrameNowMob.textContent =  Math.round(shortFrame) + ' ' + 'мм'
+    //Для короткой стороны
+    //десктоп
+    const $resultShortFrameNow = document.getElementById('resultShortFrameNow')
+    $resultShortFrameNow.textContent =  Math.round(shortFrame) + ' ' + 'мм'
+    //мобайл
+    const $resultShortFrameNowMob = document.getElementById('resultShortFrameNowMob')
+    $resultShortFrameNowMob.textContent =  Math.round(shortFrame) + ' ' + 'мм'
 
     // Для длины волны
     //десктоп
@@ -365,8 +334,6 @@ function calculate() {
     const $provolkaValueNowMob = document.getElementById('provolkaValueNowMob')
     $provolkaValueNowMob.textContent =  Math.round(provolka) + ' ' + 'мм'
 
-
-
     // Делаем лоадер
     const $loaderOnClick = document.getElementById('loaderOnClick')
     $loaderOnClick.classList.add('load-result')
@@ -385,10 +352,6 @@ function calculate() {
     frequencyInput.placeholder = 'Частота'
     pointDistancInput.value = ''
     pointDistancInput.placeholder = 'Расстояние'
-
-    
-
-
 }
 
 //Удаляю всю историю
