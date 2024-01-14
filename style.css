@@ -29,6 +29,8 @@ button, a {
     cursor: pointer;
 }
 
+
+
 .list-group-item {
     color: var(--md-sys-color-total) !important;
     background: none !important;
@@ -238,7 +240,6 @@ button, a {
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    z-index: 0;
 }
 
 .title-and-result {
@@ -503,11 +504,9 @@ button, a {
 
 
 .circles {
-    z-index: 1;
     border-radius: 45%;
     display: -webkit-box;
     display: -ms-flexbox;
-    position: absolute;
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     margin: 0 51%;
@@ -520,6 +519,8 @@ button, a {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     -webkit-font-smoothing: subpixel-antialiased;
+    z-index: 0; 
+    pointer-events: none; 
   }
   .circles div {
     position: absolute;
@@ -688,11 +689,17 @@ button, a {
         margin-left: -15px;
         margin-right: -15px;
     }
+
+    .text-section {
+        background-color: var(--md-sys-color-second-background);
+        border-radius: 32px;
+        padding: 36px 16px 36px 16px;
+    }
+
     .circles {
         margin: 0 70%;
       }
     
-
     .cover-h{
         width: 100%;
         font-size: 28px !important;
@@ -711,6 +718,8 @@ button, a {
         border: 0px solid rgba(255, 255, 255, 0.05);
         background: none;
         backdrop-filter: none;
+        z-index: 0;
+        position: relative;
     }
 
     #openModalButton {
@@ -769,7 +778,6 @@ button, a {
     }
   }
 
-
   .panel {
     position: fixed;
     top: 0;
@@ -779,7 +787,7 @@ button, a {
     background: var(--md-sys-color-second-background);
     transition: left 0.3s ease;
     box-shadow: 0px 0px 36px 0px rgba(0, 0, 0, 0.24);
-    z-index: 99999;
+    z-index: 999;
   }
 
   .panel-body {
@@ -836,8 +844,8 @@ button, a {
   }
 
   .toast {
-    background-color: #1bc097 !important; /* Цвет фона уведомления */
-    color: #fff !important; /* Цвет текста уведомления */
+    background-color: #1bc097 !important; 
+    color: #fff !important; 
 }
 
 
