@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" media="screen" rel="stylesheet">
+    <link href="palette.css" media="screen" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Рассчет антенны зигзаг Харченко</title>
+</head>
+<body>
+<div class="app-container ">
+    <div class="app-header">
+        <div class="app-header-left">
+                <span class="app-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="54" height="36" viewBox="0 0 54 36" fill="none">
+                        <path d="M13.8027 1.6505L1.74614 13.2803C1.33848 13.6735 1.33848 14.3265 1.74614 14.7197L13.8027 26.3495C14.182 26.7154 14.7802 26.7241 15.17 26.3693L26.0948 16.4267C26.4737 16.0819 27.0518 16.0792 27.4339 16.4203L38.5982 26.3874C38.9861 26.7337 39.5747 26.7249 39.9521 26.3672L52.2343 14.7258C52.6504 14.3314 52.6504 13.6686 52.2343 13.2742L39.9521 1.63283C39.5747 1.27511 38.9861 1.26634 38.5982 1.61264L27.4339 11.5797C27.0518 11.9208 26.4737 11.9181 26.0948 11.5733L15.17 1.63066C14.7802 1.27592 14.182 1.28459 13.8027 1.6505Z" stroke="white"/>
+                        <path d="M18 30C21.4839 31.5 23.1778 35 26.7097 35C30.1935 35 31.9355 31.5 36 30.5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M27 16V25" stroke="white"/>
+                    </svg>
+                </span>
+            <p class="app-name">Антенна <span>Харченко</span></p>
+        </div>
+        <div class="app-header-right">
+            <button class="mode-switch" title="Switch Theme">
+                <svg class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="24" height="24" viewBox="0 0 24 24">
+                    <defs></defs>
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                </svg>
+            </button>
+                <button  class="round-light-btn toggle-btn-head d-lg-none d-lg-block" style="margin-bottom: 0px; background: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-120q-138 0-240.5-91.5T122-440h82q14 104 92.5 172T480-200q117 0 198.5-81.5T760-480q0-117-81.5-198.5T480-760q-69 0-129 32t-101 88h110v80H120v-240h80v94q51-64 124.5-99T480-840q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-480q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-120Zm112-192L440-464v-216h80v184l128 128-56 56Z"/></svg>
+                 </button>
+                <button class="round-light-btn d-lg-none d-lg-block" data-bs-toggle="modal" data-bs-target="#share" style="margin-bottom: 0px; background: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-640q17 0 28.5-11.5T760-760q0-17-11.5-28.5T720-800q-17 0-28.5 11.5T680-760q0 17 11.5 28.5T720-720ZM240-440q17 0 28.5-11.5T280-480q0-17-11.5-28.5T240-520q-17 0-28.5 11.5T200-480q0 17 11.5 28.5T240-440Zm480 280q17 0 28.5-11.5T760-200q0-17-11.5-28.5T720-240q-17 0-28.5 11.5T680-200q0 17 11.5 28.5T720-160Zm0-600ZM240-480Zm480 280Z"/></svg>
+                </button>
+            
+        </div>
+    </div>
+    <div class="app-content">
+        <div class="app-sidebar d-none d-lg-block">
+            <button class="round-light-btn toggle-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M480-120q-138 0-240.5-91.5T122-440h82q14 104 92.5 172T480-200q117 0 198.5-81.5T760-480q0-117-81.5-198.5T480-760q-69 0-129 32t-101 88h110v80H120v-240h80v94q51-64 124.5-99T480-840q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-480q0 75-28.5 140.5t-77 114q-48.5 48.5-114 77T480-120Zm112-192L440-464v-216h80v184l128 128-56 56Z"/></svg>
+             </button>
+            <button class="round-light-btn" data-bs-toggle="modal" data-bs-target="#share">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M720-80q-50 0-85-35t-35-85q0-7 1-14.5t3-13.5L322-392q-17 15-38 23.5t-44 8.5q-50 0-85-35t-35-85q0-50 35-85t85-35q23 0 44 8.5t38 23.5l282-164q-2-6-3-13.5t-1-14.5q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35q-23 0-44-8.5T638-672L356-508q2 6 3 13.5t1 14.5q0 7-1 14.5t-3 13.5l282 164q17-15 38-23.5t44-8.5q50 0 85 35t35 85q0 50-35 85t-85 35Zm0-640q17 0 28.5-11.5T760-760q0-17-11.5-28.5T720-800q-17 0-28.5 11.5T680-760q0 17 11.5 28.5T720-720ZM240-440q17 0 28.5-11.5T280-480q0-17-11.5-28.5T240-520q-17 0-28.5 11.5T200-480q0 17 11.5 28.5T240-440Zm480 280q17 0 28.5-11.5T760-200q0-17-11.5-28.5T720-240q-17 0-28.5 11.5T680-200q0 17 11.5 28.5T720-160Zm0-600ZM240-480Zm480 280Z"/></svg>
+            </button>
+        </div>
+        <div class="container-fluid custom-container-xxl">
+            <div class="calc-form-section">
+                <div class="col-12 ">
+                    <div class="row title-and-result" >
+                        <div class="col-lg-6 title-layaut">
+                            <div class="cover-h">
+                                Рассчет антенны зигзаг Харченко
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-none d-lg-block load-result2" >
+                            <div class="svg-loader" id="svgLoader">
+                                
+                                <dotlottie-player src="img/loader.json" background="transparent" speed="1" style="width: 120px; height: 120px;" loop autoplay></dotlottie-player>
+                                
+                                <!-- <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none"><style>@keyframes loader3{0%{-webkit-transform:rotate(0);transform:rotate(0)}to{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}</style><path fill="#fff" d="M6.685 13.626a1.626 1.626 0 100-3.252 1.626 1.626 0 000 3.252zm5.315 0a1.626 1.626 0 100-3.252 1.626 1.626 0 000 3.252zm5.316 0a1.626 1.626 0 100-3.252 1.626 1.626 0 000 3.252z" style="animation:loader3 1s cubic-bezier(.63,-.71,.32,1.28) infinite both;transform-origin:center center"/></svg> -->
+                           </div>
+                            <div id="loaderOnClick">
+                                <div class="result-table">
+                                    <div class="result-row-top">
+                                        <div class="left-result-top">
+                                            <div class="frame-result-block">
+                                                <div class="frame-result-title">
+                                                    Длинная сторона (A)
+                                                </div>
+                                                <div class="frame-result-number" id="resultLongFrameNow">
+                                                    173 мм
+                                                </div>
+                                            </div>
+                                            <div class="frame-result-block">
+                                                <div class="frame-result-title">
+                                                    Короткая сторона (B)
+                                                </div>
+                                                <div class="frame-result-number" id="resultShortFrameNow">
+                                                    159 мм
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="right-result-top">
+                                            <svg width="227" height="108" viewBox="0 0 227 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M58.425 6.2788L7.88489 51.0045C6.08605 52.5964 6.08604 55.4036 7.88489 56.9955L58.4249 101.721C59.9057 103.032 62.1217 103.063 63.6395 101.796L109.961 63.1201C111.434 61.8898 113.574 61.8797 115.059 63.096L162.388 101.861C163.897 103.096 166.076 103.064 167.548 101.785L219.029 57.0184C220.863 55.4239 220.863 52.5761 219.029 50.9816L167.548 6.21524C166.076 4.9358 163.897 4.90366 162.388 6.13914L115.059 44.904C113.574 46.1203 111.434 46.1102 109.961 44.8799L63.6395 6.20384C62.1217 4.93656 59.9057 4.96841 58.425 6.2788Z" stroke="white" stroke-width="4"/>
+                                                <rect x="24" y="19" width="18" height="20" rx="4" fill="white"/>
+                                                <path d="M27.8154 34L31.5957 23.999H33.7969L37.6455 34H35.3896L32.8262 26.959C32.7715 26.8086 32.7282 26.6628 32.6963 26.5215C32.6644 26.3802 32.6348 26.2367 32.6074 26.0908H32.5459C32.5231 26.2367 32.4935 26.3802 32.457 26.5215C32.4251 26.6628 32.3818 26.8086 32.3271 26.959L29.7637 34H27.8154ZM29.9619 31.8057L30.4473 30.2471H34.8428L35.3281 31.8057H29.9619Z" fill="black"/>
+                                                <rect x="77" y="72" width="18" height="20" rx="4" fill="white"/>
+                                                <path d="M82.0596 87V77.0469H85.7715C86.8743 77.0469 87.7402 77.2611 88.3691 77.6895C88.998 78.1133 89.3125 78.7764 89.3125 79.6787C89.3125 80.2256 89.1849 80.6745 88.9297 81.0254C88.679 81.3763 88.3691 81.6178 88 81.75V81.7773C88.4557 81.9095 88.8317 82.1738 89.1279 82.5703C89.4287 82.9668 89.5791 83.4863 89.5791 84.1289C89.5791 85.0404 89.2464 85.7467 88.5811 86.248C87.9202 86.7493 87.0498 87 85.9697 87H82.0596ZM84.1377 85.5166H85.9219C86.4642 85.5166 86.8607 85.3822 87.1113 85.1133C87.3665 84.8444 87.4941 84.4798 87.4941 84.0195C87.4941 83.5638 87.3665 83.2038 87.1113 82.9395C86.8607 82.6706 86.4642 82.5361 85.9219 82.5361H84.1377V85.5166ZM84.1377 81.1348H85.7305C86.2637 81.1348 86.6488 81.0208 86.8857 80.793C87.1227 80.5605 87.2412 80.2393 87.2412 79.8291C87.2412 79.4144 87.1227 79.0954 86.8857 78.8721C86.6488 78.6488 86.2637 78.5371 85.7305 78.5371H84.1377V81.1348Z" fill="black"/>
+                                                <rect x="138" y="43" width="18" height="20" rx="4" fill="white"/>
+                                                <path d="M142.684 53.3311V52.709C142.684 51.1185 143.094 49.9108 143.914 49.0859C144.734 48.2565 145.805 47.8418 147.127 47.8418C148.38 47.8418 149.374 48.1699 150.107 48.8262C150.841 49.4824 151.208 50.3232 151.208 51.3486V51.5127H149.096V51.3213C149.096 50.7243 148.932 50.264 148.604 49.9404C148.275 49.6169 147.776 49.4551 147.106 49.4551C146.427 49.4551 145.878 49.6898 145.459 50.1592C145.044 50.6286 144.837 51.4033 144.837 52.4834V53.5566C144.837 54.5592 145.04 55.3158 145.445 55.8262C145.855 56.3366 146.418 56.5918 147.134 56.5918C147.772 56.5918 148.248 56.4209 148.562 56.0791C148.882 55.7327 149.057 55.277 149.089 54.7119L149.096 54.5342H151.208V54.7119C151.162 55.7236 150.784 56.5576 150.073 57.2139C149.362 57.8701 148.38 58.1982 147.127 58.1982C145.801 58.1982 144.728 57.7812 143.907 56.9473C143.091 56.1133 142.684 54.9079 142.684 53.3311Z" fill="black"/>
+                                                <path d="M129 47L126.113 52H131.887L129 47ZM129 59L131.887 54H126.113L129 59ZM121 46H130V45H121V46ZM121 61H130V60H121V61ZM128.5 51.5V54.5H129.5L129.5 51.5H128.5Z" fill="white"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="freq-sep">
+                                        <div class="freq-num">
+                                            <span id="freqNumResult">Для 433,075 МГц</span> &nbsp; <span id="formatLamdaToTxtDom">λ1</span>
+                                        </div>
+                                        <div class="freq-sep"></div>
+                                    </div>
+                                    <div class="secondary-result-table">
+                                        <div class="second-result-table-row">
+                                            <div class="row-title">Между точк. крепл. кабеля (C):</div>
+                                            <div class="row-value" id="pointDistanceValueNow">20 мм</div>
+                                        </div>
+                                        <div class="second-result-table-row">
+                                            <div class="row-title">Длина волны:</div>
+                                            <div class="row-value" id="waveLengthResultNow">54544 мм</div>
+                                        </div>
+                                        <div class="second-result-table-row">
+                                            <div class="row-title">Длина прута:</div>
+                                            <div class="row-value" id="provolkaValueNow">1329 мм</div>
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                    <form class="row form-container form needs-validation" novalidate style="margin-left: 0px; margin-right: 0px;">
+                        <div class="col-lg-3 mb-3">
+                            <label for="frequency" class="form-label custom-form-label">Частота</label>
+                            <div class="input-group input-group-lg">
+                                <input type="number" id="frequency" class="form-control" placeholder="433,075" aria-describedby="frequencyHelp" required >
+                                <span class="input-group-text rounded-end">МГц</span>
+                                <div class="invalid-tooltip">
+                                    Значение должно быть больше нуля
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 mb-3">
+                            <label for="pointDistance" class="form-label custom-form-label">Точки крепл. кабеля (С)</label>
+                            <div class="input-group input-group-lg">
+                                <input type="number" id="pointDistance" class="form-control" placeholder="20" aria-describedby="pointDistanceHelp" required>
+                                <span class="input-group-text rounded-end">мм</span>
+                                <div class="invalid-tooltip">
+                                    Значение должно быть больше нуля
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 mb-3">
+                            <label for="waveLengthSelector" class="form-label custom-form-label">Длина волны (λ)</label>
+                            <select id="waveLengthSelector" class="form-select form-select-lg" aria-describedby="waveLengthSelectorHelp">
+                                <!-- варианты выбора -->
+                            </select>
+                        </div>
+                        <div class="col-lg-3 mb-3 mt-auto">
+                            <button type="button" id="openModalButton" onclick="calculate()" class="btn btn-primary btn-lg w-100 custom-button" >Посчитать</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row container-c">
+                <div class="col-lg-8">
+                    <div class="resultContainer projects-section">
+                        <div class="projects-section-header">
+                            <p>Ntrcn</p>
+                        </div>
+                        <ul  class="table-responsive">
+                            <h2>Краткое содержание</h2>
+                            <p>Обычный текст...</p>
+                            
+                            <h2>Примеры</h2>
+                            <h3>Пример 1</h3>
+                            <p>Обычный текст...</p>
+                            
+                            <h3>Пример 2</h3>
+                            <p>Обычный текст...</p>
+                            
+                            <h2>Смотрите также</h2>
+                            <p>Обычный текст...</p>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-none d-lg-block" >
+                    <div class="card-result-container projects-section">
+                        <div class="projects-section-header">
+                            <p>История</p>  
+                            <button class="round-light-btn" id="removeHistoryAll" data-bs-toggle="modal" data-bs-target="#delHistAll" style="display: block;">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M120-280v-80h560v80H120Zm80-160v-80h560v80H200Zm80-160v-80h560v80H280Z"/></svg>
+                              </button>
+                        </div>
+                        <div class="card-result-list" id="cardResultList"></div>
+                        <div class="more-btn" id="moreBtn" style="display: none; padding-top: 8px;">
+                            <button type="button" id="moreBtnPanel" class="btn btn-light w-100 custom-button">Больше...</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+         </div>
+    <footer class="app-footer">
+            <p>&copy; 2024 Права не защищены. Всем плевать</p>
+    </footer>
+</div>
+
+<!-- Modal Mobile карточка текущкего подсчета -->
+<div class="modal fade " id="resultMobileModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 id="freqNumResultMob" class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="round-light-btn"  style="margin-bottom: 0px;" data-bs-dismiss="modal" aria-label="Close">  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button>
+            </div>
+            <div class="modal-body">
+                <div class="svg-antenna-modal-bg">
+                    <div class="svg-antenna-modal">
+                        <svg width="227" height="108" viewBox="0 0 227 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M58.425 6.2788L7.88489 51.0045C6.08605 52.5964 6.08604 55.4036 7.88489 56.9955L58.4249 101.721C59.9057 103.032 62.1217 103.063 63.6395 101.796L109.961 63.1201C111.434 61.8898 113.574 61.8797 115.059 63.096L162.388 101.861C163.897 103.096 166.076 103.064 167.548 101.785L219.029 57.0184C220.863 55.4239 220.863 52.5761 219.029 50.9816L167.548 6.21524C166.076 4.9358 163.897 4.90366 162.388 6.13914L115.059 44.904C113.574 46.1203 111.434 46.1102 109.961 44.8799L63.6395 6.20384C62.1217 4.93656 59.9057 4.96841 58.425 6.2788Z" stroke="white" stroke-width="4"/>
+                            <rect x="24" y="19" width="18" height="20" rx="4" fill="white"/>
+                            <path d="M27.8154 34L31.5957 23.999H33.7969L37.6455 34H35.3896L32.8262 26.959C32.7715 26.8086 32.7282 26.6628 32.6963 26.5215C32.6644 26.3802 32.6348 26.2367 32.6074 26.0908H32.5459C32.5231 26.2367 32.4935 26.3802 32.457 26.5215C32.4251 26.6628 32.3818 26.8086 32.3271 26.959L29.7637 34H27.8154ZM29.9619 31.8057L30.4473 30.2471H34.8428L35.3281 31.8057H29.9619Z" fill="black"/>
+                            <rect x="77" y="72" width="18" height="20" rx="4" fill="white"/>
+                            <path d="M82.0596 87V77.0469H85.7715C86.8743 77.0469 87.7402 77.2611 88.3691 77.6895C88.998 78.1133 89.3125 78.7764 89.3125 79.6787C89.3125 80.2256 89.1849 80.6745 88.9297 81.0254C88.679 81.3763 88.3691 81.6178 88 81.75V81.7773C88.4557 81.9095 88.8317 82.1738 89.1279 82.5703C89.4287 82.9668 89.5791 83.4863 89.5791 84.1289C89.5791 85.0404 89.2464 85.7467 88.5811 86.248C87.9202 86.7493 87.0498 87 85.9697 87H82.0596ZM84.1377 85.5166H85.9219C86.4642 85.5166 86.8607 85.3822 87.1113 85.1133C87.3665 84.8444 87.4941 84.4798 87.4941 84.0195C87.4941 83.5638 87.3665 83.2038 87.1113 82.9395C86.8607 82.6706 86.4642 82.5361 85.9219 82.5361H84.1377V85.5166ZM84.1377 81.1348H85.7305C86.2637 81.1348 86.6488 81.0208 86.8857 80.793C87.1227 80.5605 87.2412 80.2393 87.2412 79.8291C87.2412 79.4144 87.1227 79.0954 86.8857 78.8721C86.6488 78.6488 86.2637 78.5371 85.7305 78.5371H84.1377V81.1348Z" fill="black"/>
+                            <rect x="138" y="43" width="18" height="20" rx="4" fill="white"/>
+                            <path d="M142.684 53.3311V52.709C142.684 51.1185 143.094 49.9108 143.914 49.0859C144.734 48.2565 145.805 47.8418 147.127 47.8418C148.38 47.8418 149.374 48.1699 150.107 48.8262C150.841 49.4824 151.208 50.3232 151.208 51.3486V51.5127H149.096V51.3213C149.096 50.7243 148.932 50.264 148.604 49.9404C148.275 49.6169 147.776 49.4551 147.106 49.4551C146.427 49.4551 145.878 49.6898 145.459 50.1592C145.044 50.6286 144.837 51.4033 144.837 52.4834V53.5566C144.837 54.5592 145.04 55.3158 145.445 55.8262C145.855 56.3366 146.418 56.5918 147.134 56.5918C147.772 56.5918 148.248 56.4209 148.562 56.0791C148.882 55.7327 149.057 55.277 149.089 54.7119L149.096 54.5342H151.208V54.7119C151.162 55.7236 150.784 56.5576 150.073 57.2139C149.362 57.8701 148.38 58.1982 147.127 58.1982C145.801 58.1982 144.728 57.7812 143.907 56.9473C143.091 56.1133 142.684 54.9079 142.684 53.3311Z" fill="black"/>
+                            <path d="M129 47L126.113 52H131.887L129 47ZM129 59L131.887 54H126.113L129 59ZM121 46H130V45H121V46ZM121 61H130V60H121V61ZM128.5 51.5V54.5H129.5L129.5 51.5H128.5Z" fill="white"/>
+                        </svg>
+                    </div>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Длинная сторона рамки (A)
+                        <span id="resultLongFrameNowMob"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Короткая сторона рамки (B)
+                        <span id="resultShortFrameNowMob"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Длина волны
+                        <span id="waveLengthResultNowMob"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Между точк. крепл. кабеля (C):
+                        <span id="pointDistanceValueNowMob"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Длина прута
+                        <span id="provolkaValueNowMob"></span>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Desktop+Modal результат подсчета карточка с хранилища-->
+<div class="modal fade" id="clickHistoryResultModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" id="clickHistoryResultModalBody">
+            
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Поделиться-->
+<div class="modal fade" id="share" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Поделиться</h5>
+          <button type="button" class="round-light-btn" style="margin-bottom: 0px;" data-bs-dismiss="modal" aria-label="Закрыть">  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button>
+        </div>
+        <div class="modal-body">
+            <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
+            <div class="elfsight-app-cdab5b0d-2c83-4f9d-97e8-f0d23c675540" data-elfsight-app-lazy></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+          
+        </div>
+      </div>
+    </div>
+</div>
+
+
+  <!-- Modal Удаление всей истории-->
+<div class="modal fade" id="delHistAll" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"  aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Очистить всю историю?</h5>
+          <button type="button" class="round-light-btn"  style="margin-bottom: 0px;" data-bs-dismiss="modal" aria-label="Закрыть"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button>
+        </div>
+        <div class="modal-body">
+            Вы уверены, что хотите удалить безвозвратно всю историю рассчетов?
+        </div>
+        <div class="modal-footer">
+            <button type="button" onclick="deleteAllHistoryBtn()" class="btn btn-danger" data-bs-dismiss="modal" >Удалить навсегда</button>
+            <button type="button" class="btn btn-primary custom-button" id="customprimary-btn" data-bs-dismiss="modal">Не удалять</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast  align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body" id="toastTxt">
+          </div>
+          <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Панель истории-->
+<div class="panel">
+    <div class="panelHeader">  
+            <p>История</p>  
+            <button class="round-light-btn close-panel-btn" style="margin-bottom: 0px;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            </button>
+    </div>
+
+
+
+    
+    <div class="panel-body" id="resultsListFull"></div>
+  </div>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="trash.js"></script>
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+</body>
+</html>
