@@ -238,7 +238,7 @@ button, a {
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    
+    z-index: 0;
 }
 
 .title-and-result {
@@ -503,6 +503,7 @@ button, a {
 
 
 .circles {
+    z-index: 1;
     border-radius: 45%;
     display: -webkit-box;
     display: -ms-flexbox;
