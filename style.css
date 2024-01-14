@@ -86,6 +86,12 @@ button, a {
 
 }
 
+   .math-expression {
+            display: inline-block;
+            font-size: 16px; /* или другой размер шрифта по вашему выбору */
+            margin: 0;
+            padding: 0;
+        }
 
 .modal-content {
     background-color: var(--md-sys-color-second-background) !important;
@@ -453,19 +459,24 @@ button, a {
     margin-top: 8px;
 }
 
+.text-section {
+    background-color: var(--md-sys-color-second-background);
+    border-radius: 32px;
+    padding: 56px 48px 56px 48px;
+}
 
-.projects-section {
+.history-section {
     background-color: var(--md-sys-color-second-background);
     border-radius: 32px;
     padding: 32px 32px 32px 32px;
 }
 
-.projects-section-header {
+.history-section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.projects-section-header p {
+.history-section-header p {
     font-size: 24px;
     line-height: 32px;
     font-weight: 700;
@@ -595,6 +606,7 @@ button, a {
     background: var(--md-sys-color-second-background);
     transition: left 0.3s ease;
     box-shadow: 0px 0px 36px 0px rgba(0, 0, 0, 0.24);
+    z-index: 99999;
   }
 
   .panel-body {
@@ -665,6 +677,4 @@ button, a {
     .app-sidebar {
         background-color: var(--md-sys-color-surface-bright);
       }
-
-
 }

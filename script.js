@@ -1,4 +1,4 @@
-const setLimitCounHistory = 6 // Количество выводимых карточек в краткой истории
+const setLimitCounHistory = 8 // Количество выводимых карточек в краткой истории
 const $toastTxt = document.getElementById('toastTxt')
 
 
@@ -35,7 +35,7 @@ function updateListHistory(data, limitCount, idElementOut) {
     //Если нет ничего в истории то говорю
     if (Array.isArray(copyResultsArrayNow) && copyResultsArrayNow.length === 0) {
         $cardResultList.innerHTML = `
-        <div class="empty-result"> История рассчетов пока отсутствует ;( </div>
+        <div class="empty-result"> История расчетов пока отсутствует ;( </div>
         `
         $removeHistoryAll.style.display = 'none'
         $moreBtn.style.display = 'none'
@@ -85,7 +85,7 @@ function updateListHistory(data, limitCount, idElementOut) {
         
                 $clickHistoryResultModalBody.innerHTML = `
                 <div class="modal-header">
-                    <h5 id="freqNumResultMob" class="modal-title" id="exampleModalLabel">Время рассчета: ${historyCard.dateItem}</h5>
+                    <h5 id="freqNumResultMob" class="modal-title" id="exampleModalLabel">Время расчета: ${historyCard.dateItem}</h5>
                     <button type="button" class="round-light-btn" style="margin-bottom: 0px;" data-bs-dismiss="modal" aria-label="Закрыть"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button>
                 </div>
                 <div class="modal-body">
@@ -105,7 +105,7 @@ function updateListHistory(data, limitCount, idElementOut) {
                 </div>
                     <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Рассчет для частоты
+                            Расчет для частоты
                             <span>${copyResultsArrayNow[index].frequencyItem} МГц (${copyResultsArrayNow[index].selectedValueLambdaItem})</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -122,12 +122,12 @@ function updateListHistory(data, limitCount, idElementOut) {
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Длина волны
-                            <span>${copyResultsArrayNow[index].frequencyValueItem}</span>
+                            <span>${copyResultsArrayNow[index].frequencyValueItem} мм</span>
                         </li>
                     
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             Длина прута
-                            <span>${copyResultsArrayNow[index].provolkaItem}</span>
+                            <span>${copyResultsArrayNow[index].provolkaItem} мм</span>
                         </li>
                         
                     </ul>
@@ -251,7 +251,7 @@ function calculate() {
     const provolka = (longFrame() + shortFrame) * 4
 
     console.log('Раччтояние между точками крепления кабеля - ' + pointDistanceValue)
-    console.log('Рассчет для длины волны - ' + selectedValueLambda)
+    console.log('Расчет для длины волны - ' + selectedValueLambda)
     console.log('Длинная сторонеа рамки - ' + longFrame())
     console.log('Короткая сторонеа рамки - ' + shortFrame)
     console.log('Общая длина прута без учета изгибов - ' + provolka)
@@ -363,7 +363,7 @@ function calculate() {
     $provolkaValueNow.textContent =  Math.round(provolka) + ' ' + 'мм'
     //мобайл
     const $provolkaValueNowMob = document.getElementById('provolkaValueNowMob')
-    $provolkaValueNowMob.textContent =  Math.round(provolka) + ' ' + 'мм' + ' (' + Math.round(provolka)/10 + ' см)' 
+    $provolkaValueNowMob.textContent =  Math.round(provolka) + ' ' + 'мм'
 
 
 
