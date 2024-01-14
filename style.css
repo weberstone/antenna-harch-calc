@@ -256,7 +256,7 @@ button, a {
     font-style: normal !important;
     font-weight: 300 !important;
     line-height: 115% !important;
-    width: 75%;
+    width: 76%;
     top: 50%;
 
 }
@@ -525,7 +525,7 @@ button, a {
     }
 
     .title-and-result {
-        padding: 36px 8px 12px 8px;
+        padding: 36px 8px 12px 20px;
     }
 
     .form-container {
@@ -553,16 +553,10 @@ button, a {
         background-position: 80px center;
     }
 
-    .cover-h h1 {
-            width: 100%;
-            font-size: 28px !important;
-            font-weight: 700 !important;
-            line-height: 140% !important;
-            text-align: center;
-        }
+ 
 
     .title-and-result {
-        padding: 36px 8px 12px 8px;
+        padding: 36px 8px 12px 20px;
     }
 
     .form-container {
@@ -672,7 +666,7 @@ button, a {
 
     .cover-h {
         font-size: 76px !important;
-        width: 65%;
+        width: 63%;
     }
     .app-sidebar {
         background-color: var(--md-sys-color-surface-bright);
