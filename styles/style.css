@@ -236,7 +236,7 @@ h1 {
 
 /*Блок калькулятора общий*/
 .calc-form-section{
-    background: #23262d url("../img/bg-min.jpg") no-repeat;
+    background: #23262d url("img/bg-min.jpg") no-repeat;
     background-size: cover;
     background-position: center -56px;
     border-radius: 32px;
@@ -488,7 +488,7 @@ h1 {
 }
 
 .svg-antenna-modal-bg {
-    background: #23262d url("../img/bg-min.jpg") no-repeat;
+    background: #23262d url("img/bg-min.jpg") no-repeat;
     background-size: cover;
     border-radius: 8px;
     margin-bottom: 16px;
