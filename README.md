@@ -1,8 +1,9 @@
-<h1 align="center">JavaScript Калькулятор расчета антенны зигзаг Харченко</h1>
+<h1 align="center">JavaScript калькулятор расчета антенны зигзаг Харченко</h1>
 
 <img src="img/og-img.png" width="100%">
 
 <h2 align="center"><a  href="https://weberstone.github.io/antenna-harch-calc/">Live Demo</a></h2>
+
 
 ## Про проект
 Простой калькулятор для расчета базовой антенны зигзаг Харченко. Выполнен на JS. 

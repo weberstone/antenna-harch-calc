@@ -192,7 +192,6 @@ h1 {
     display: flex;
     padding: 0px 16px 0px 0px;
     overflow-x: hidden;
-    
 }
 
 .app-sidebar {
@@ -216,17 +215,18 @@ h1 {
 
 .round-light-btn svg {
     fill: var(--md-sys-color-secondary); 
-  }
+}
 
 .round-light-btn:hover {
     transition: 0.2s;
     background-color: var(--md-sys-color-surface-variant1);
     color: var(--md-sys-color-primary);
 }
+
 .round-light-btn:hover svg {
     transition: 0.2s;
     fill: var(--md-sys-color-primary); 
-  }
+}
 
 .round-light-btn:active {
     transition: 0.2s;
@@ -236,7 +236,7 @@ h1 {
 
 /*Блок калькулятора общий*/
 .calc-form-section{
-    background: #23262d url("img/bg-min.jpg") no-repeat;
+    background: #23262d url("/img/bg-min.jpg") no-repeat;
     background-size: cover;
     background-position: center -56px;
     border-radius: 32px;
@@ -488,7 +488,7 @@ h1 {
 }
 
 .svg-antenna-modal-bg {
-    background: #23262d url("img/bg-min.jpg") no-repeat;
+    background: #23262d url("/img/bg-min.jpg") no-repeat;
     background-size: cover;
     border-radius: 8px;
     margin-bottom: 16px;
